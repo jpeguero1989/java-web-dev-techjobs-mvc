@@ -31,15 +31,13 @@ public class SearchController {
        if (searchTerm =="" || searchTerm.toLowerCase() == "all")
        {
            model.addAttribute("jobs",JobData.findAll());
-           model.addAttribute("title","Jobs With "+ columnChoices.get((searchType)) +": "+searchTerm);
        }
        else
        {
             model.addAttribute("jobs",JobData.findByColumnAndValue(searchType,searchTerm));
-            model.addAttribute("title","Jobs With "+ columnChoices.get((searchType)) +": "+searchTerm);
-
 
        }
+       model.addAttribute("title","Jobs With "+ columnChoices.get((searchType)) +": "+searchTerm);
        model.addAttribute("searchType",searchType);
        model.addAttribute("columns", columnChoices);
        return "search";
